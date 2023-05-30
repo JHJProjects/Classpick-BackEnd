@@ -1,6 +1,8 @@
 package com.classpick.springbootproject.config;
 
-import com.classpick.springbootproject.entity.Book;
+import com.classpick.springbootproject.entity.OnedayClass;
+import com.classpick.springbootproject.entity.Message;
+import com.classpick.springbootproject.entity.Review;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
@@ -22,9 +24,15 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
                 HttpMethod.DELETE,
                 HttpMethod.PUT};
 
-        config.exposeIdsFor(Book.class);
+        config.exposeIdsFor(OnedayClass.class);
+        //ID를 노출한다
+        config.exposeIdsFor(Review.class);
+        config.exposeIdsFor(Message.class);
 
-        disableHttpMethods(Book.class, config, theUnsupportedActions);
+        disableHttpMethods(OnedayClass.class, config, theUnsupportedActions);
+        //Post Patch Delete를 막고,Get만 허용
+        disableHttpMethods(Review.class,config,theUnsupportedActions);
+        disableHttpMethods(Message.class,config,theUnsupportedActions);
 
         /* Configure CORS Mapping */
         cors.addMapping(config.getBasePath() + "/**")
@@ -42,7 +50,6 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
                         httpMethods.disable(theUnsupportedActions));
     }
 }
-
 
 
 
