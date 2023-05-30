@@ -54,7 +54,7 @@ public class ClassService {
         //체크아웃이 null인지 확인(null과 같으면 사용자 이메일과 책 ID와 일치하는 데이터베이스에서 책을 찾았다는 의미
         //사용자가 현재 이 책을 대출하지 않았는지 확인
         if (!aClass.isPresent() || validateRegister != null || aClass.get().getClassesAvailable() <= 0) {
-            throw new Exception("현재 이 책은 존재하지 않거나 대출중입니다.");
+            throw new Exception("현재 이 클래스는 존재하지 않거나 수강중입니다.");
         }
 
         //사용 가능한 사본에서 1을 뺀 값(대출했으니까!)
@@ -159,7 +159,7 @@ public class ClassService {
 
         //클래스가 존재하지 않거나 신청안한 경우
         if (!aClass.isPresent() || validateRegister == null) {
-            throw new Exception("책이 존재하지 않거나 사용자가 대출하지 않았습니다.");
+            throw new Exception("클래스가 존재하지 않거나 사용자가 수강하지 않았습니다.");
         }
 
         //클래스 세트 사본, 책 두권 얻고 +1 (반납했으니까)

@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface HistoryRepository extends JpaRepository<History, Long> {
 
     //history 저장소
-    Page<History> findBooksByUserEmail(@RequestParam("email") String userEmail, Pageable pageable);
+    Page<History> findClassesByUserEmail(@RequestParam("email") String userEmail, Pageable pageable);
 
 }

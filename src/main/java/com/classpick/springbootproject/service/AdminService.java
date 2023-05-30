@@ -74,7 +74,7 @@ public class AdminService {
         Optional<OnedayClass> aClass = classRepository.findById(classId);
 
         if (!aClass.isPresent()) {
-            throw new Exception("클래스을 찾을 수 없습니다.");
+            throw new Exception("클래스를 찾을 수 없습니다.");
         }
 
         classRepository.delete(aClass.get());
